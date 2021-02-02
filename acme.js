@@ -51,7 +51,6 @@ const userButton = document.querySelectorAll(".user-button");
 // Is there a way to sort in place without removing?
 
 const sortChildren = (selected, newHome) => {
-  debugger;
   for (let user of selected) {
     newHome.appendChild(user);
   }
@@ -64,36 +63,24 @@ const sortChildren = (selected, newHome) => {
   }
 };
 
-const backButton = document.querySelectorAll(".back");
-const forwardButton = document.querySelectorAll(".forward");
+const buttons = document.querySelectorAll("button");
 
-// if I have time I'll loop back and consolidate backButton and
-// forwardButton.
-
-[...backButton].forEach((button) => {
+buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    if (button.parentElement.previousElementSibling) {
+    if (!button.className.includes("off")) {
+      let newHome;
       const parent = button.parentElement.lastChild;
-      const newHome = button.parentElement.previousElementSibling.lastChild;
       let selected = parent.querySelectorAll(".selected");
-      selected.forEach((child) => {
-        parent.removeChild(child);
+      if (button.className === "back") {
+        newHome = button.parentElement.previousElementSibling.lastChild;
+      }
+      if (button.className === "forward") {
+        newHome = button.parentElement.nextElementSibling.lastChild;
+      }
+      for (each of selected) {
+        parent.removeChild(each);
         sortChildren(selected, newHome);
-      });
-    }
-  });
-});
-
-[...forwardButton].forEach((button) => {
-  button.addEventListener("click", () => {
-    if (button.parentElement.nextElementSibling) {
-      const parent = button.parentElement.lastChild;
-      const newHome = button.parentElement.nextElementSibling.lastChild;
-      let selected = parent.querySelectorAll(".selected");
-      selected.forEach((child) => {
-        parent.removeChild(child);
-        sortChildren(selected, newHome);
-      });
+      }
     }
   });
 });

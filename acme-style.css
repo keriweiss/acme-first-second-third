@@ -1,5 +1,5 @@
 body {
-  font-family: Verdana;
+  font-family: verdana;
 }
 
 h1 {
@@ -20,7 +20,6 @@ h1 {
   flex-direction: column;
   width: 25%;
   padding: 10px;
-  /* align-items: center; */
 }
 
 #first div,
