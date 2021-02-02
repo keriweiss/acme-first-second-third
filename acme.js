@@ -40,7 +40,6 @@ const userButton = document.querySelectorAll(".user-button");
 });
 
 // Add and sort users according to users.id in their new home
-// Is there a way to sort in place without removing?
 const sortChildren = (selected, newHome) => {
   for (let user of selected) {
     newHome.appendChild(user);
@@ -54,9 +53,8 @@ const sortChildren = (selected, newHome) => {
   }
 };
 
-const buttons = document.querySelectorAll("button");
-
 //back and forward buttons
+const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     if (!button.className.includes("off")) {
