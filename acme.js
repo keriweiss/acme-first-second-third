@@ -6,19 +6,15 @@ const users = [
   { id: 5, name: "Lumpy", slot: "second" },
 ];
 
-const first = document.querySelector("#first");
-const second = document.querySelector("#second");
-const third = document.querySelector("#third");
+const first = document.createElement("div");
+const second = document.createElement("div");
+const third = document.createElement("div");
 
-const firstUsers = document.createElement("div");
-const secondUsers = document.createElement("div");
-const thirdUsers = document.createElement("div");
+document.querySelector("#first").appendChild(first);
+document.querySelector("#second").appendChild(second);
+document.querySelector("#third").appendChild(third);
 
-first.appendChild(firstUsers);
-second.appendChild(secondUsers);
-third.appendChild(thirdUsers);
-
-const slots = [firstUsers, secondUsers, thirdUsers];
+const slots = [first, second, third];
 
 //initial placement of users
 users.forEach((user) => {
@@ -26,22 +22,20 @@ users.forEach((user) => {
   nameButton.innerHTML = user.name;
   nameButton.order = user.id;
   nameButton.className = "user-button";
-  slots.forEach((slot) => {
+  for (slot of slots) {
     if (user.slot === slot.parentElement.id) {
       slot.appendChild(nameButton);
     }
-  });
+  }
 });
 
 //create class "selected" for selected user
 const userButton = document.querySelectorAll(".user-button");
 [...userButton].forEach((button) => {
   button.addEventListener("click", () => {
-    if (button.className === "selected") {
-      button.className = "user-button";
-    } else {
-      button.className = "selected";
-    }
+    button.className === "selected"
+      ? (button.className = "user-button")
+      : (button.className = "selected");
   });
 });
 
