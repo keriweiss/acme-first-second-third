@@ -20,6 +20,7 @@ third.appendChild(thirdUsers);
 
 const slots = [firstUsers, secondUsers, thirdUsers];
 
+//initial placement of users
 users.forEach((user) => {
   const nameButton = document.createElement("div");
   nameButton.innerHTML = user.name;
@@ -32,6 +33,7 @@ users.forEach((user) => {
   });
 });
 
+//create class "selected" for selected user
 const userButton = document.querySelectorAll(".user-button");
 [...userButton].forEach((button) => {
   button.addEventListener("click", () => {
@@ -44,12 +46,7 @@ const userButton = document.querySelectorAll(".user-button");
 });
 
 // Add and sort users according to users.id in their new home
-// Seems like there might be a better way to do this ---
-// I'm adding, sorting, removing, and then adding again
-// Would it be better to check the id of the previous user
-// and sort while adding? Probably.
 // Is there a way to sort in place without removing?
-
 const sortChildren = (selected, newHome) => {
   for (let user of selected) {
     newHome.appendChild(user);
@@ -65,6 +62,7 @@ const sortChildren = (selected, newHome) => {
 
 const buttons = document.querySelectorAll("button");
 
+//back and forward buttons
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     if (!button.className.includes("off")) {
