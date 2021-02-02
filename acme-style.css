@@ -1,5 +1,6 @@
-body {
+* {
   font-family: verdana;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -22,23 +23,22 @@ h1 {
   padding: 10px;
 }
 
+/* 
 #first div,
 #second div,
 #third div {
-  flex-direction: column;
-  width: 96%;
-}
+} */
 
 .selected {
   background-color: #ff4d00;
   font-size: 18px;
-  padding: 10px;
+  padding: 14px;
   border: 1px lightgrey solid;
   text-align: center;
 }
 
 .user-button {
-  padding: 10px;
+  padding: 15px;
   font-size: 18px;
   border: 0px;
   background-color: white;
