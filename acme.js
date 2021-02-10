@@ -33,6 +33,11 @@ users.forEach((user) => {
 const userButton = document.querySelectorAll(".user-button");
 [...userButton].forEach((button) => {
   button.addEventListener("click", () => {
+    /*love this! super clean and easy to read
+    could also use className.toggle(),
+    which adds a className if the element **doesnt** have
+    and removes the className if the element **does** have it
+    */
     button.className === "selected"
       ? (button.className = "user-button")
       : (button.className = "selected");
@@ -41,6 +46,7 @@ const userButton = document.querySelectorAll(".user-button");
 
 // Add and sort users according to users.id in their new home
 const sortChildren = (selected, newHome) => {
+  //love this!
   for (let user of selected) {
     newHome.appendChild(user);
   }
@@ -55,7 +61,23 @@ const sortChildren = (selected, newHome) => {
 
 //back and forward buttons
 const buttons = document.querySelectorAll("button");
+/*
+
+*/
 buttons.forEach((button) => {
+  /*
+    It could be useful to take advantage of event propagation and bubbling.
+    see here: https://www.freecodecamp.org/news/a-simplified-explanation-of-event-propagation-in-javascript-f9de7961a06e/
+    TLDR, if you interact with an element, this event "bubbles" up to all its parent elements.
+    So, instead of adding the event listeners to each individual button, you could add the
+    listener to the #lists div and target the buttons you want by doing
+        if (event.target.tagName === 'BUTTON') {
+            //your code here
+        }
+    and using the same className logic below.
+    If you had functionality that would enable you to add new columns, this would be really helpful
+    because you wouldn't have to add the event listener onto each button.
+    */
   button.addEventListener("click", () => {
     if (!button.className.includes("off")) {
       let newHome;
